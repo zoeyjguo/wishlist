@@ -1,11 +1,9 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { WishItem } from '../../shared/models/wishItem';
-import { FormsModule } from '@angular/forms'; // needed to use NgModel
+import { WishItem } from '../../../shared/models/wishItem';
 
 @Component({
   selector: 'app-add-wish-form',
-  standalone: true,
-  imports: [FormsModule],
+  standalone: false,
   templateUrl: './add-wish-form.component.html',
   styleUrl: './add-wish-form.component.css'
 })

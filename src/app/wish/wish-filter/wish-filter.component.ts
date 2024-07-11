@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // needed to use NgModel
-import { WishItem } from '../../shared/models/wishItem';
+import { WishItem } from '../../../shared/models/wishItem';
 
 
 const filters = [
@@ -11,8 +10,7 @@ const filters = [
 
 @Component({
   selector: 'app-wish-filter',
-  standalone: true,
-  imports: [FormsModule],
+  standalone: false,
   templateUrl: './wish-filter.component.html',
   styleUrl: './wish-filter.component.css'
 })
