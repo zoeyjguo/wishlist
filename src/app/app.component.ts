@@ -1,19 +1,14 @@
 import { Component } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
-import { FormsModule }   from '@angular/forms'; // needed to use NgModel
-
-const filters = [
-  (item : WishItem) => item,
-  (item : WishItem) => !item.isComplete,
-  (item : WishItem) => item.isComplete,
-]
+import { WishListComponent } from './wish-list/wish-list.component';
+import { AddWishFormComponent } from "./add-wish-form/add-wish-form.component";
+import { WishFilterComponent } from "./wish-filter/wish-filter.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgFor, NgIf, FormsModule],
+  imports: [RouterOutlet, WishListComponent, AddWishFormComponent, WishFilterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -24,22 +19,5 @@ export class AppComponent {
     new WishItem('Find grass that cuts itself')
   ];
 
-  listFilter : any = '0';
-
-  newWishText = '';
-
-  title = 'wishlist';
-
-  get visibleItems() : WishItem[] {
-    return this.items.filter(filters[this.listFilter]);
-  }
-
-  addNewWish() {
-    this.items.push(new WishItem(this.newWishText));
-    this.newWishText = '';
-  }
-
-  toggleItem(item : WishItem) {
-    item.isComplete = !item.isComplete;
-  }
+  filter: any = () => {};
 }
