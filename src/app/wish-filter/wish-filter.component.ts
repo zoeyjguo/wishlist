@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // needed to use NgModel
 import { WishItem } from '../../shared/models/wishItem';
 
@@ -17,14 +17,17 @@ const filters = [
   styleUrl: './wish-filter.component.css'
 })
 export class WishFilterComponent implements OnInit {
-  @Output() filter = new EventEmitter<any>();
-  listFilter : any = '0';
+  @Input() filter: any;
+  @Output() filterChange = new EventEmitter<any>();
 
   ngOnInit(): void {
-    this.filter.emit(filters[0]);
+    this.updateFilter('0');
   }
 
-  changeFilter(value : any) {
-    this.filter.emit(filters[value]);
+  listFilter : any = '0';
+
+  updateFilter(value : any) {
+    this.filter = filters[value]; // change the filter property to the given filter
+    this.filterChange.emit(this.filter); // emit the filterChange event with the new filter, which in turn updates the filter property on the app component
   }
 }
