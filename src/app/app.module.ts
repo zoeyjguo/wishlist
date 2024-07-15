@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { WishModule } from './wish/wish.module';
 import { provideHttpClient } from '@angular/common/http';
+import { ContactModule } from './contact/contact.module';
 
 
 @NgModule({
@@ -13,11 +14,13 @@ import { provideHttpClient } from '@angular/common/http';
   imports: [
     BrowserModule, 
     RouterModule,
-    WishModule
+    WishModule,
+    ContactModule,
+    RouterModule,
   ], 
   providers: [
     provideHttpClient(),
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,23 +5,26 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { WishListItemComponent } from './wish-list-item/wish-list-item.component';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish-filter/wish-filter.component';
+import { WishComponent } from './wish.component';
+import { ContactModule } from '../contact/contact.module';
+import { RoutingModule } from '../routing.module';
 
 @NgModule({
   declarations: [
     WishListComponent, 
     AddWishFormComponent, 
     WishFilterComponent, 
-    WishListItemComponent,
+    WishListItemComponent, 
+    WishComponent,
   ],
   imports: [
     CommonModule, 
-    FormsModule
+    FormsModule,
+    ContactModule,
+    RoutingModule
   ],
   exports: [
-    WishListComponent, 
-    AddWishFormComponent, 
-    WishFilterComponent, 
-    WishListItemComponent, 
+    WishComponent
   ]
 })
 export class WishModule { }
